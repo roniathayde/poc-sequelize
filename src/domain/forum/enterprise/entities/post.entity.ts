@@ -24,6 +24,14 @@ export class Post extends Entity<PostProps> {
     this.props.content = value;
   }
 
+  get authorId() {
+    return this.props.authorId.toValue();
+  }
+
+  private set authorId(value: string) {
+    this.props.authorId = new UniqueEntityID(value);
+  }
+
   static create(props: PostProps, id?: string) {
     return new Post(props, id ? new UniqueEntityID(id) : undefined);
   }
