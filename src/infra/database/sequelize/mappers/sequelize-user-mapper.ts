@@ -1,25 +1,28 @@
 import { UniqueEntityID } from "../../../../core/entities/unique-entity-id"
-import type { User } from "../../../../domain/accounts/enterprise/entitites/user.entity"
+import { User } from "../../../../domain/accounts/enterprise/entitites/user.entity"
+import { UserModel } from "../models/user.model"
+import { Attributes } from 'sequelize'
+
 
 
 export abstract class SequelizeUserMapper {
-  static toDomain(UserSequelize: UserSequelize): User {
+  static toDomain(raw: UserModel): User {
     return User.create(
       {
-        name: UserSequelize.name,
-        email: UserSequelize.email,
-        password: UserSequelize.password,
+        username: raw.get('username'),
+        email: raw.get('email'),
+        password: raw.get('password'),
       },
-      new UniqueEntityID(UserSequelize.id),
+      new UniqueEntityID(raw.get('id')),
     )
   }
 
-  static toPrisma(question: User): User {
+  static toSequelize(user: User): Attributes<UserModel> {
     return {
-      id: question.id.toString(),
-      name: question.name,
-      email: question.email,
-      password: question.password,
+      id: user.id.toValue(),
+      username: user.username,
+      email: user.email,
+      password: user.password,
     }
   }
 }

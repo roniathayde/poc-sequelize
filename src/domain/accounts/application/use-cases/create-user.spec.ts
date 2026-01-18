@@ -14,17 +14,17 @@ describe('Create User Use Case', () => {
 
   it('should be able to create a new user', async () => {
     const result = await sut.execute({
-      name: 'John Doe',
+      username: 'John Doe',
       email: 'johndoe@example.com',
       password: 'password123',
     })
 
     expect(result.isRight()).toBe(true)
     expect(inMemoryUserRepository.items).toHaveLength(1)
-    expect(inMemoryUserRepository.items[0].name).toEqual('John Doe')
+    expect(inMemoryUserRepository.items[0].username).toEqual('John Doe')
     //  caso either tenha o valor em result.value (opcional)
     if (result.isRight()) {
-      expect(result.value.user.name).toBe('John Doe')
+      expect(result.value.user.username).toBe('John Doe')
     }
   })
 
@@ -33,14 +33,14 @@ describe('Create User Use Case', () => {
 
     // Cria o primeiro usuário
     await sut.execute({
-      name: 'User 01',
+      username: 'User 01',
       email,
       password: 'password',
     })
 
     // Tenta criar o segundo com mesmo e-mail
     const result = await sut.execute({
-      name: 'User 02',
+      username: 'User 02',
       email,
       password: 'password',
     })

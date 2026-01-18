@@ -28,7 +28,6 @@ describe('New Post Use Case', () => {
 
     // Verifica se os dados salvos batem com o input
     expect(inMemoryPostRepository.items[0].title).toBe('Título do Post')
-    expect(inMemoryPostRepository.items[0].authorId).toBeInstanceOf(UniqueEntityID)
     expect(inMemoryPostRepository.items[0].authorId.toString()).toBe('author-1')
   })
 

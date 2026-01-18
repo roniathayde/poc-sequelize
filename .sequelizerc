@@ -1,0 +1,9 @@
+// this file should be in CommonJs format because sequelize-cli doesn't supoort ESModules yet
+const path = require('node:path')
+
+module.exports = {
+  'config': path.resolve('src/infra/database/sequelize', 'config-cli.js'),
+  'models-path': path.resolve('src/infra/database/sequelize', 'models'),
+  'seeders-path': path.resolve('src/infra/database/sequelize', 'seeders'),
+  'migrations-path': path.resolve('src/infra/database/sequelize', 'migrations')
+};

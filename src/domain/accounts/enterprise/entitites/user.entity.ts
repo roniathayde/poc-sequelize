@@ -2,17 +2,17 @@ import { Entity } from "../../../../core/entities/entity";
 import { UniqueEntityID } from "../../../../core/entities/unique-entity-id";
 
 export interface UserProps {
-  name: string
+  username: string
   email: string
   password: string
 }
 export class User extends Entity<UserProps> {
-  get name() {
-    return this.props.name;
+  get username() {
+    return this.props.username;
   }
 
-  private set name(value: string) {
-    this.props.name = value;
+  private set username(value: string) {
+    this.props.username = value;
   }
 
   get password() {
@@ -34,10 +34,10 @@ export class User extends Entity<UserProps> {
 
   public updateName(newName: string) {
     if (newName.length < 3) throw new Error("Nome muito curto.");
-    this.name = newName;
+    this.username = newName;
   }
 
-  static create(props: UserProps, id?: string) {
-    return new User(props, id ? new UniqueEntityID(id) : undefined);
+  static create(props: UserProps, id?: UniqueEntityID) {
+    return new User(props, id ? id : undefined);
   }
 }
