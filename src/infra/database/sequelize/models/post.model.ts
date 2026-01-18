@@ -1,28 +1,6 @@
 import { DataTypes, Model } from "sequelize";
 import { sequelize } from "../config";
 
-// @Table({ tableName: 'posts', timestamps: true, freezeTableName: true })
-// export class PostModel extends Model {
-//   @Default(DataType.UUIDV4) // Gera o UUID automaticamente no Sequelize
-//   @PrimaryKey
-//   @Column(DataType.UUID)    // Define o tipo da coluna no Banco de Dados
-//   id!: string;
-
-//   @Column(DataType.STRING)
-//   title!: string;
-
-//   @Column(DataType.TEXT)
-//   content!: string;
-
-//   @ForeignKey(() => UserModel)
-//   @Column(DataType.STRING)
-//   authorId!: string;
-
-//   @BelongsTo(() => UserModel)
-//   author!: UserModel;
-// }
-
-
 export class PostModel extends Model {
   declare id: string
   declare title: string
