@@ -1,9 +1,3 @@
-### Iniciar sequelize config
-npx sequelize-cli init
-
-### Criar arquivo de migration sequelize
-npx sequelize-cli migration:generate --name nome-da-migration
-
 --- 
 POC Sequelize - DDD + Clean Architecture
 
